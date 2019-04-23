@@ -228,12 +228,11 @@ Prepare_Installer()
 	chmod +x "$resources_path"/pbzx
 	"$resources_path"/pbzx "$installer_folder"/InstallAssistantAuto.pkg | Output_Off cpio -i
 
-	mv "$installer_folder"/InstallESDDmg.pkg "$installer_folder"/InstallESD.dmg
-	cp "$installer_folder"/InstallESD.dmg "$save_folder"/"Install $installer_name.app"/Contents/SharedSupport
+	cp "$installer_folder"/InstallESDDmg.pkg "$save_folder"/"Install $installer_name.app"/Contents/SharedSupport/InstallESD.dmg
 	mv "$installer_folder"/RecoveryHDMetaDmg.pkg "$installer_folder"/RecoveryHDMeta.dmg
 
 	Output_Off hdiutil attach "$installer_folder"/RecoveryHDMeta.dmg -mountpoint /tmp/RecoveryHDMeta -nobrowse
-	cp -R "$installer_folder"/RecoveryHDMeta/ "$save_folder"/"Install $installer_name.app"/Contents/SharedSupport/
+	cp -R /tmp/RecoveryHDMeta/ "$save_folder"/"Install $installer_name.app"/Contents/SharedSupport/
 	Output_Off hdiutil detach /tmp/RecoveryHDMeta
 
 	touch "$save_folder"/"Install $installer_name.app"
