@@ -133,16 +133,21 @@ Input_Operation_Version()
 {
 	echo ${text_message}"/ What operation would you like to run?"${erase_style}
 	echo ${text_message}"/ Input an operation number."${erase_style}
-	echo ${text_message}"/     1 - Mojave"${erase_style}
-	echo ${text_message}"/     2 - High Sierra"${erase_style}
+	echo ${text_message}"/     1 - Catalina"${erase_style}
+	echo ${text_message}"/     2 - Mojave"${erase_style}
+	echo ${text_message}"/     3 - High Sierra"${erase_style}
+
 	Input_On
 	read -e -p "/ " operation_version
 	Input_Off
 
 	if [[ $operation_version == "1" ]]; then
-		installer_choice="m"
+		installer_choice="c"
 	fi
 	if [[ $operation_version == "2" ]]; then
+		installer_choice="m"
+	fi
+	if [[ $operation_version == "3" ]]; then
 		installer_choice="hs"
 	fi
 }
